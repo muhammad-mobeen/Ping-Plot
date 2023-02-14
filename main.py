@@ -24,7 +24,9 @@ def ping_plotter(plotter_data, attack_size):
     # x = np.random.randn(10000, 3)
     x = np.array(plotter_data)
 
-    plt.hist(x, bins=n_bins)
+    binwidth = 5
+
+    plt.hist(x, bins=range(min(x), max(x) + binwidth, binwidth))
     plt.gca().set(title='Ping Response Time Histogram', xlabel='Round-Trip Time (ms)', ylabel='Frequency');
     
     # plt.legend(prop ={'size': 10})
@@ -35,8 +37,8 @@ def ping_plotter(plotter_data, attack_size):
     plt.show()
 
 if __name__ == '__main__':
-    target_address = "google.com"
-    attack_size = 50
+    target_address = "ist.edu.pk"
+    attack_size = 600
     ping_data = ping_shot(target_address, attack_size)
     plotter_data = ping_scraper(ping_data)
     ping_plotter(plotter_data, attack_size)
